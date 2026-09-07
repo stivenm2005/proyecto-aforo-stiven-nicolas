@@ -71,7 +71,7 @@ El detalle de épicas, historias de usuario, tareas y subtareas del Sprint 1, co
 
 ## Prototipo de diseño (Figma)
 
-Prototipo de interfaces en Figma: [Aforo — Prototipo UI](https://www.figma.com/design/4r8vN6w9xOFWarOO1prsjp/Sin-t%C3%ADtulo?node-id=2-33)
+Prototipo de interfaces en Figma: [Aforo — Prototipo UI](https://www.figma.com/design/4r8vN6w9xOFWarOO1prsjp/Sin-t%C3%ADtulo?node-id=2-33&t=tYt8cgr7rAQYGjEx-0)
 
 ## Licencia
 
