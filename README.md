@@ -17,7 +17,7 @@ El sistema está inspirado en plataformas como Tuboleta, Taquilla Live, Eventbri
 
 Las tareas más complejas (análisis UML, modelo entidad-relación, diseño en Figma, revisión final y documentación del corte) se trabajan en conjunto por todo el equipo — ver detalle en `planificacion/jira-backlog.csv`.
 
-## Estado actual — Corte #1
+## Estado actual 
 
 - [x] Prototipo de interfaz navegable (HTML) — `frontend/prototipo/aforo.html`
 - [x] Backlog planificado (Épicas, Historias, Tareas, Subtareas) — `planificacion/jira-backlog.csv`
