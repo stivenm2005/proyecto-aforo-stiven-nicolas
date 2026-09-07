@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aforo · Gestión de Eventos y Espectáculos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --cream:#FBF8FF;
+    --surface:#FFFFFF;
+    --ink:#241B3A;
+    --ink-soft:#5C5470;
+    --violet:#6C4AB6;
+    --violet-deep:#4B3182;
+    --amber:#F2A93B;
+    --coral:#E85D6B;
+    --teal:#2FA891;
+    --line:#E7DFF7;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0 0 .3em 0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+
+  /* NAV */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand .mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--violet),var(--coral));
+    display:flex;align-items:center;justify-content:center;
+    color:white;font-family:'Fraunces',serif;font-weight:700;font-size:18px;
+  }
+  .brand span{font-family:'Fraunces',serif;font-size:22px;font-weight:600;}
+  nav.tabs{display:flex; gap:4px; flex-wrap:wrap;}
+  nav.tabs button{
+    border:none; background:transparent; padding:9px 16px;
+    border-radius:999px; font-size:14px; font-weight:500; color:var(--ink-soft);
+    transition:.15s;
+  }
+  nav.tabs button:hover{background:var(--line);}
+  nav.tabs button.active{background:var(--violet); color:white;}
+  .role-pill{
+    font-size:12px; padding:5px 12px; border-radius:999px;
+    background:var(--surface); border:1px solid var(--line); color:var(--ink-soft);
+  }
+
+  main{max-width:1180px; margin:0 auto; padding:36px 32px 80px;}
+  .panel{display:none; animation:fade .25s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+  .hero{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;
+    padding:56px 0 40px;
+  }
+  .hero .eyebrow{color:var(--violet); font-weight:600; letter-spacing:.02em; margin-bottom:10px; font-size:14px;}
+  .hero h1{font-size:44px; line-height:1.08; max-width:520px;}
+  .hero p.lead{color:var(--ink-soft); font-size:17px; max-width:480px; margin-top:14px;}
+  .hero-art{
+    border-radius:22px; height:320px;
+    background:
+      radial-gradient(circle at 25% 25%, rgba(242,169,59,.55), transparent 45%),
+      radial-gradient(circle at 75% 70%, rgba(232,93,107,.55), transparent 45%),
+      linear-gradient(135deg,var(--violet),var(--violet-deep));
+    position:relative; overflow:hidden;
+  }
+  .hero-art::after{
+    content:"AFORO 2026"; position:absolute; bottom:20px; left:24px;
+    color:rgba(255,255,255,.85); font-family:'Fraunces',serif; font-size:20px; letter-spacing:.03em;
+  }
+
+  .auth-wrap{display:flex; gap:26px; margin-top:10px; flex-wrap:wrap;}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; box-shadow:0 1px 2px rgba(36,27,58,.04);
+  }
+  .auth-card{width:340px;}
+  .switcher{display:flex; background:var(--cream); border-radius:999px; padding:4px; margin-bottom:20px;}
+  .switcher button{flex:1; border:none; background:none; padding:8px 0; border-radius:999px; font-weight:600; font-size:13px; color:var(--ink-soft);}
+  .switcher button.active{background:var(--violet); color:#fff;}
+  label{font-size:13px; font-weight:600; color:var(--ink-soft); display:block; margin:12px 0 5px;}
+  input,select,textarea{
+    width:100%; padding:10px 12px; border-radius:9px; border:1px solid var(--line);
+    background:#fff; font-family:inherit; font-size:14px; color:var(--ink);
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--violet); outline-offset:1px;}
+  .btn{
+    display:inline-block; border:none; padding:11px 20px; border-radius:9px;
+    font-weight:600; font-size:14px; transition:.15s;
+  }
+  .btn-primary{background:var(--violet); color:#fff;}
+  .btn-primary:hover{background:var(--violet-deep);}
+  .btn-amber{background:var(--amber); color:#3A2600;}
+  .btn-outline{background:transparent; border:1px solid var(--line); color:var(--ink);}
+  .btn-block{width:100%; margin-top:18px;}
+  .btn-sm{padding:6px 12px; font-size:12.5px; border-radius:7px;}
+
+  .register-toggle{display:flex; gap:10px; margin-bottom:14px;}
+  .register-toggle button{flex:1; padding:8px; border-radius:8px; border:1px solid var(--line); background:#fff; font-size:13px; font-weight:600; color:var(--ink-soft);}
+  .register-toggle button.active{border-color:var(--violet); color:var(--violet); background:#F4EEFF;}
+
+  /* Sections generic */
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:22px; flex-wrap:wrap; gap:14px;}
+  .filters{display:flex; gap:10px; flex-wrap:wrap;}
+  .filters select, .filters input{width:auto; min-width:160px;}
+
+  .event-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:20px;}
+  .event-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column;}
+  .event-banner{height:110px; position:relative;}
+  .event-body{padding:18px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .event-body h3{font-size:18px;}
+  .meta-row{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--ink-soft);}
+  .price{font-family:'Fraunces',serif; font-size:20px; margin-top:6px;}
+  .badge{display:inline-flex; align-items:center; padding:4px 10px; border-radius:999px; font-size:11.5px; font-weight:700; letter-spacing:.02em; width:fit-content;}
+  .badge-programado{background:#EAF1FF; color:#2C5CC5;}
+  .badge-boleteria{background:#FFF3DE; color:#B87400;}
+  .badge-vivo{background:#FDE7E9; color:#C43B4D;}
+  .badge-finalizado{background:#E9F7EE; color:#28935A;}
+  .badge-cancelado{background:#F1EFF6; color:#8A8296;}
+  .badge-reservada{background:#EAF1FF; color:#2C5CC5;}
+  .badge-confirmada{background:#E9F7EE; color:#28935A;}
+  .badge-si{background:#E9F7EE; color:#28935A;}
+  .badge-no{background:#FDE7E9; color:#C43B4D;}
+  .badge-progreso{background:#FFF3DE; color:#B87400;}
+  .badge-pendiente{background:#F1EFF6; color:#8A8296;}
+  .badge-reprogramada{background:#FDE7E9; color:#C43B4D;}
+  .badge-epica{background:#F4EEFF; color:var(--violet-deep);}
+  .badge-historia{background:#EAF1FF; color:#2C5CC5;}
+  .badge-tarea{background:#FFF3DE; color:#B87400;}
+  .badge-subtarea{background:#F1EFF6; color:#8A8296;}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px;}
+  th{text-align:left; padding:10px 12px; background:#F4EEFF; color:var(--violet-deep); font-weight:700; font-size:12px; text-transform:none; border-bottom:1px solid var(--line);}
+  td{padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  .table-wrap{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:auto;}
+
+  .kpi-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-bottom:28px;}
+  .kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:20px;}
+  .kpi .num{font-family:'Fraunces',serif; font-size:32px; color:var(--violet-deep);}
+  .kpi .lbl{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+  .chart-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:20px;}
+  .chart-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px;}
+
+  .tabline{display:flex; gap:8px; margin-bottom:22px; border-bottom:1px solid var(--line);}
+  .tabline button{border:none; background:none; padding:10px 4px; margin-right:18px; font-weight:600; color:var(--ink-soft); border-bottom:2px solid transparent;}
+  .tabline button.active{color:var(--violet-deep); border-color:var(--violet);}
+
+  .modal-bg{display:none; position:fixed; inset:0; background:rgba(36,27,58,.45); z-index:100; align-items:center; justify-content:center;}
+  .modal-bg.active{display:flex;}
+  .modal{background:#fff; border-radius:16px; padding:28px; width:420px; max-width:92vw; max-height:88vh; overflow:auto;}
+  .modal-close{float:right; border:none; background:none; font-size:18px; color:var(--ink-soft);}
+  .form-row-2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .note-box{background:#F4EEFF; border-radius:10px; padding:12px 14px; font-size:13px; color:var(--violet-deep); margin-top:16px;}
+  .toast{
+    position:fixed; bottom:24px; right:24px; background:var(--violet-deep); color:#fff;
+    padding:14px 20px; border-radius:10px; font-size:14px; display:none; z-index:200; box-shadow:0 8px 22px rgba(36,27,58,.25);
+  }
+  .doc-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin-bottom:20px;}
+  .legend-row{display:flex; gap:14px; flex-wrap:wrap; margin:12px 0 4px;}
+  .legend-row .badge{font-size:11px;}
+  footer{text-align:center; color:var(--ink-soft); font-size:12.5px; padding:30px 0 10px;}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;}
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .chart-grid{grid-template-columns:1fr;}
+    nav.tabs{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="mark">A</div>
+    <span>Aforo</span>
+  </div>
+  <nav class="tabs" id="navTabs">
+    <button data-tab="inicio" class="active">Inicio</button>
+    <button data-tab="eventos">Eventos</button>
+    <button data-tab="reservas">Mis reservas</button>
+    <button data-tab="agente">Panel agente</button>
+    <button data-tab="admin">Dashboard admin</button>
+    <button data-tab="planificacion">Planificación</button>
+    <button data-tab="scrum">Daily Scrum</button>
+  </nav>
+  <span class="role-pill" id="rolePill">Sesión: invitado</span>
+</div>
+
+<main>
+
+  <!-- ============ INICIO / AUTENTICACIÓN ============ -->
+  <section class="panel active" id="tab-inicio">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Gestión de eventos y espectáculos</div>
+        <h1>Un escenario digital para cada boleta que vendes.</h1>
+        <p class="lead">Aforo centraliza el registro de clientes y agentes, la administración de eventos y el control de reservas de tu compañía de entretenimiento, con reportes en tiempo real para el equipo administrativo.</p>
+      </div>
+      <div class="hero-art"></div>
+    </div>
+
+    <div class="auth-wrap">
+      <div class="card auth-card">
+        <div class="switcher">
+          <button class="active" onclick="setAuthMode('login')">Iniciar sesión</button>
+          <button onclick="setAuthMode('registro')">Registrarme</button>
+        </div>
+
+        <div id="loginForm">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="cliente@correo.com" value="ana.rios@correo.com">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••" value="••••••••">
+          <button class="btn btn-primary btn-block" onclick="mockLogin()">Ingresar</button>
+          <div class="note-box">Prototipo: el inicio de sesión valida correo + contraseña contra la tabla Persona/Usuario en el backend.</div>
+        </div>
+
+        <div id="registroForm" style="display:none;">
+          <div class="register-toggle">
+            <button class="active" onclick="setRegistroTipo('cliente')">Soy cliente</button>
+            <button onclick="setRegistroTipo('agente')">Soy agente</button>
+          </div>
+          <div class="form-row-2">
+            <div><label>N.° identificación</label><input placeholder="1 006 543 210"></div>
+            <div><label>Nombre completo</label><input placeholder="Ana Ríos"></div>
+          </div>
+          <label>Correo electrónico</label>
+          <input placeholder="ana.rios@correo.com">
+          <div class="form-row-2">
+            <div><label>País</label><select><option>Colombia</option><option>México</option><option>Perú</option></select></div>
+            <div><label>Departamento</label><select><option>Valle del Cauca</option><option>Antioquia</option><option>Cundinamarca</option></select></div>
+          </div>
+          <div class="form-row-2">
+            <div><label>Ciudad</label><select><option>Cali</option><option>Medellín</option><option>Bogotá</option></select></div>
+            <div><label>Teléfono</label><input placeholder="+57 300 000 0000"></div>
+          </div>
+          <label>Dirección</label>
+          <input placeholder="Cra 45 # 12-30">
+          <div id="camposAgente" style="display:none;">
+            <div class="form-row-2">
+              <div><label>Comisión (%)</label><input placeholder="8"></div>
+              <div><label>Experiencia (años)</label><input placeholder="3"></div>
+            </div>
+          </div>
+          <div id="camposCliente">
+            <div class="form-row-2">
+              <div><label>Puntos iniciales</label><input placeholder="0"></div>
+              <div><label>¿Ver publicidad?</label><select><option>Sí</option><option>No</option></select></div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="mockRegistro()">Crear cuenta</button>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1; min-width:260px;">
+        <h3 style="font-size:16px;">Perfiles de la plataforma</h3>
+        <p style="color:var(--ink-soft); font-size:14px;">Usa los botones de arriba para navegar por las vistas de cada rol tal como quedarán construidas en el sistema final:</p>
+        <ul style="font-size:14px; color:var(--ink-soft); padding-left:18px; line-height:1.8;">
+          <li><strong style="color:var(--ink)">Cliente:</strong> explora eventos y gestiona sus reservas.</li>
+          <li><strong style="color:var(--ink)">Agente:</strong> registra eventos y administra el estado de las reservas.</li>
+          <li><strong style="color:var(--ink)">Administrador:</strong> visualiza reportes del sistema en un dashboard.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTOS (CLIENTE) ============ -->
+  <section class="panel" id="tab-eventos">
+    <div class="section-head">
+      <div>
+        <h2>Eventos disponibles</h2>
+        <p style="color:var(--ink-soft); margin:0;">Vista del cliente — explora y reserva entradas.</p>
+      </div>
+      <div class="filters">
+        <select id="filtroCiudad" onchange="renderEventos()">
+          <option value="">Todas las ciudades</option>
+        </select>
+        <select id="filtroEstado" onchange="renderEventos()">
+          <option value="">Todos los estados</option>
+          <option>Programado</option><option>En Boletería</option><option>En Vivo</option><option>Finalizado</option><option>Cancelado</option>
+        </select>
+      </div>
+    </div>
+    <div class="event-grid" id="eventGrid"></div>
+  </section>
+
+  <!-- ============ MIS RESERVAS (CLIENTE) ============ -->
+  <section class="panel" id="tab-reservas">
+    <div class="section-head">
+      <div>
+        <h2>Mis reservas</h2>
+        <p style="color:var(--ink-soft); margin:0;">Historial de reservas del cliente autenticado, con su estado actual.</p>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Evento</th><th>Fecha reserva</th><th>Entradas</th><th>Valor total</th><th>Observaciones</th><th>Estado</th></tr></thead>
+        <tbody id="reservasClienteBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ PANEL AGENTE ============ -->
+  <section class="panel" id="tab-agente">
+    <div class="section-head">
+      <div>
+        <h2>Panel del agente</h2>
+        <p style="color:var(--ink-soft); margin:0;">Registro de eventos y administración de reservas.</p>
+      </div>
+      <button class="btn btn-amber" onclick="openEventoModal()">+ Registrar evento</button>
+    </div>
+
+    <div class="tabline">
+      <button class="active" data-agtab="eventosAgente" onclick="setAgenteTab('eventosAgente')">Eventos registrados</button>
+      <button data-agtab="reservasAgente" onclick="setAgenteTab('reservasAgente')">Administrar reservas</button>
+    </div>
+
+    <div id="eventosAgente">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Código</th><th>Nombre</th><th>Ciudad</th><th>Teatro</th><th>Fecha inicio</th><th>Capacidad</th><th>Precio base</th><th>Estado</th></tr></thead>
+          <tbody id="eventosAgenteBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="reservasAgente" style="display:none;">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Cliente</th><th>Evento</th><th>Entradas</th><th>Valor total</th><th>Estado</th><th>Actualizar</th></tr></thead>
+          <tbody id="reservasAgenteBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ADMIN ============ -->
+  <section class="panel" id="tab-admin">
+    <div class="section-head">
+      <div>
+        <h2>Dashboard del administrador</h2>
+        <p style="color:var(--ink-soft); margin:0;">Reportes generales del sistema.</p>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="num">128</div><div class="lbl">Clientes registrados</div></div>
+      <div class="kpi"><div class="num">14</div><div class="lbl">Agentes registrados</div></div>
+      <div class="kpi"><div class="num">3</div><div class="lbl">Administradores</div></div>
+      <div class="kpi"><div class="num">42</div><div class="lbl">Eventos registrados</div></div>
+      <div class="kpi"><div class="num">356</div><div class="lbl">Reservas registradas</div></div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3 style="font-size:15px;">Ingresos totales por mes (2026)</h3>
+        <canvas id="chartIngresos" height="200"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3 style="font-size:15px;">Reservas por evento</h3>
+        <canvas id="chartReservas" height="200"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLANIFICACIÓN (JIRA) ============ -->
+  <section class="panel" id="tab-planificacion">
+    <div class="doc-card">
+      <h2>Planificación · Corte #1 (Backlog tipo Jira)</h2>
+      <p style="color:var(--ink-soft);">Estructura sugerida del proyecto en Jira para la primera entrega (Sprint 1: 04 – 25 de agosto). Cada fila corresponde a un ítem que debe crearse en el tablero, con su tipo, responsable, estimación y fechas.</p>
+      <div class="legend-row">
+        <span class="badge badge-epica">Épica</span>
+        <span class="badge badge-historia">Historia de usuario</span>
+        <span class="badge badge-tarea">Tarea</span>
+        <span class="badge badge-subtarea">Subtarea</span>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Tipo</th><th>Título</th><th>Responsable</th><th>SP</th><th>Inicio</th><th>Fin</th><th>Sprint</th><th>Estado</th></tr>
+        </thead>
+        <tbody id="jiraBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ DAILY SCRUM ============ -->
+  <section class="panel" id="tab-scrum">
+    <div class="doc-card">
+      <h2>Seguimiento de reuniones diarias (Daily Scrum)</h2>
+      <p style="color:var(--ink-soft);">Bitácora del equipo durante el Sprint 1, con asistencia, avance y manejo de impedimentos.</p>
+      <div class="legend-row">
+        <span class="badge badge-si">Asistió</span>
+        <span class="badge badge-no">Ausente</span>
+        <span class="badge badge-confirmada">Completada</span>
+        <span class="badge badge-progreso">En progreso</span>
+        <span class="badge badge-pendiente">Pendiente</span>
+        <span class="badge badge-reprogramada">Reprogramada</span>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Fecha</th><th>Integrante</th><th>Asistencia</th><th>Actividades realizadas</th><th>Actividades planificadas</th><th>Impedimentos</th><th>Acciones de mitigación</th><th>Estado</th></tr>
+        </thead>
+        <tbody id="scrumBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>Prototipo académico — Proyecto Integrador · Bases de Datos &amp; Programación en Ambiente Web I</footer>
+
+<!-- MODAL: RESERVA -->
+<div class="modal-bg" id="modalReserva">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modalReserva')">✕</button>
+    <h3 id="reservaEventoTitulo">Reservar entradas</h3>
+    <label>Número de entradas</label>
+    <input type="number" id="reservaEntradas" min="1" value="2">
+    <label>Observaciones</label>
+    <textarea rows="2" id="reservaObs" placeholder="Ej: silla de ruedas, cerca al escenario..."></textarea>
+    <div class="note-box" id="reservaResumen"></div>
+    <button class="btn btn-primary btn-block" onclick="confirmarReserva()">Confirmar reserva</button>
+  </div>
+</div>
+
+<!-- MODAL: NUEVO EVENTO -->
+<div class="modal-bg" id="modalEvento">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modalEvento')">✕</button>
+    <h3>Registrar evento</h3>
+    <label>Nombre del evento</label>
+    <input id="nvNombre" placeholder="Festival Sonidos del Pacífico">
+    <div class="form-row-2">
+      <div><label>Teatro / recinto</label><input id="nvTeatro" placeholder="Teatro Municipal"></div>
+      <div><label>Ciudad</label><input id="nvCiudad" placeholder="Cali"></div>
+    </div>
+    <div class="form-row-2">
+      <div><label>Fecha y hora inicio</label><input type="datetime-local" id="nvInicio"></div>
+      <div><label>Fecha y hora fin</label><input type="datetime-local" id="nvFin"></div>
+    </div>
+    <div class="form-row-2">
+      <div><label>Capacidad total</label><input type="number" id="nvCapacidad" placeholder="500"></div>
+      <div><label>Precio base</label><input type="number" id="nvPrecio" placeholder="80000"></div>
+    </div>
+    <label>Descripción</label>
+    <textarea rows="2" id="nvDesc" placeholder="Breve descripción del evento"></textarea>
+    <button class="btn btn-primary btn-block" onclick="registrarEvento()">Guardar evento</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- DATOS MOCK ---------------- */
+const eventos = [
+  {codigo:"EV-001", nombre:"Festival Sonidos del Pacífico", ciudad:"Cali", teatro:"Plaza de Toros", inicio:"2026-10-12T19:00", capacidad:4000, precio:120000, estado:"En Boletería", color1:"#6C4AB6", color2:"#E85D6B"},
+  {codigo:"EV-002", nombre:"Sinfónica de Medellín: Noche de Gala", ciudad:"Medellín", teatro:"Teatro Metropolitano", inicio:"2026-09-28T20:00", capacidad:1200, precio:95000, estado:"Programado", color1:"#2FA891", color2:"#6C4AB6"},
+  {codigo:"EV-003", nombre:"Stand Up: Risas sin Filtro", ciudad:"Bogotá", teatro:"Teatro Nacional", inicio:"2026-09-15T21:00", capacidad:600, precio:65000, estado:"En Vivo", color1:"#E85D6B", color2:"#F2A93B"},
+  {codigo:"EV-004", nombre:"Obra: El Jardín Secreto", ciudad:"Cali", teatro:"Teatro Municipal", inicio:"2026-08-30T18:30", capacidad:450, precio:55000, estado:"Finalizado", color1:"#F2A93B", color2:"#2FA891"},
+  {codigo:"EV-005", nombre:"Rock en el Parque Local", ciudad:"Barranquilla", teatro:"Estadio Municipal", inicio:"2026-11-05T17:00", capacidad:8000, precio:150000, estado:"Programado", color1:"#6C4AB6", color2:"#F2A93B"},
+  {codigo:"EV-006", nombre:"Ballet Clásico: Cascanueces", ciudad:"Medellín", teatro:"Teatro Pablo Tobón", inicio:"2026-12-10T19:30", capacidad:900, precio:110000, estado:"Cancelado", color1:"#E85D6B", color2:"#6C4AB6"}
+];
+
+const reservasCliente = [
+  {id:"RS-101", evento:"Festival Sonidos del Pacífico", fecha:"2026-08-01", entradas:2, valor:240000, obs:"Ninguna", estado:"Confirmada"},
+  {id:"RS-102", evento:"Stand Up: Risas sin Filtro", fecha:"2026-08-04", entradas:1, valor:65000, obs:"Silla cerca al pasillo", estado:"Reservada"},
+  {id:"RS-103", evento:"Ballet Clásico: Cascanueces", fecha:"2026-08-06", entradas:4, valor:440000, obs:"Grupo familiar", estado:"Cancelada"}
+];
+
+const reservasAgente = [
+  {id:"RS-101", cliente:"Ana Ríos", evento:"Festival Sonidos del Pacífico", entradas:2, valor:240000, estado:"Confirmada"},
+  {id:"RS-104", cliente:"Julián Torres", evento:"Sinfónica de Medellín: Noche de Gala", entradas:3, valor:285000, estado:"Reservada"},
+  {id:"RS-105", cliente:"Camila Vega", evento:"Rock en el Parque Local", entradas:5, valor:750000, estado:"Reservada"}
+];
+
+const badgeMap = {
+  "Programado":"badge-programado","En Boletería":"badge-boleteria","En Vivo":"badge-vivo",
+  "Finalizado":"badge-finalizado","Cancelado":"badge-cancelado",
+  "Reservada":"badge-reservada","Confirmada":"badge-confirmada","Cancelada":"badge-cancelado"
+};
+
+/* ---------------- NAVEGACIÓN ---------------- */
+document.querySelectorAll('#navTabs button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#navTabs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    if(btn.dataset.tab==='admin'){ setTimeout(initCharts,50); }
+  });
+});
+
+function setAuthMode(mode){
+  document.querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('loginForm').style.display = mode==='login' ? 'block':'none';
+  document.getElementById('registroForm').style.display = mode==='registro' ? 'block':'none';
+}
+function setRegistroTipo(tipo){
+  document.querySelectorAll('.register-toggle button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('camposAgente').style.display = tipo==='agente' ? 'block':'none';
+  document.getElementById('camposCliente').style.display = tipo==='cliente' ? 'block':'none';
+}
+function mockLogin(){
+  document.getElementById('rolePill').textContent = 'Sesión: cliente (Ana Ríos)';
+  showToast('Sesión iniciada correctamente');
+  document.querySelector('#navTabs button[data-tab="eventos"]').click();
+}
+function mockRegistro(){
+  showToast('Cuenta creada. Ya puedes iniciar sesión.');
+  setAuthMode('login');
+  document.querySelectorAll('.switcher button')[0].classList.add('active');
+  document.querySelectorAll('.switcher button')[1].classList.remove('active');
+  document.getElementById('loginForm').style.display='block';
+  document.getElementById('registroForm').style.display='none';
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.style.display='block';
+  setTimeout(()=>t.style.display='none',2200);
+}
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+/* ---------------- EVENTOS (CLIENTE) ---------------- */
+function renderEventos(){
+  const ciudad=document.getElementById('filtroCiudad').value;
+  const estado=document.getElementById('filtroEstado').value;
+  const grid=document.getElementById('eventGrid');
+  grid.innerHTML='';
+  eventos.filter(e=> (!ciudad||e.ciudad===ciudad) && (!estado||e.estado===estado) ).forEach(e=>{
+    const div=document.createElement('div');
+    div.className='event-card';
+    div.innerHTML=`
+      <div class="event-banner" style="background:linear-gradient(135deg,${e.color1},${e.color2})"></div>
+      <div class="event-body">
+        <span class="badge ${badgeMap[e.estado]}">${e.estado}</span>
+        <h3>${e.nombre}</h3>
+        <div class="meta-row">📍 ${e.teatro}, ${e.ciudad}</div>
+        <div class="meta-row">🗓️ ${new Date(e.inicio).toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'})}</div>
+        <div class="meta-row">🎟️ Aforo ${e.capacidad.toLocaleString('es-CO')}</div>
+        <div class="price">$${e.precio.toLocaleString('es-CO')}</div>
+        <button class="btn btn-primary" style="margin-top:8px" onclick="openReservaModal('${e.codigo}')">Reservar</button>
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+function populateFiltroCiudad(){
+  const sel=document.getElementById('filtroCiudad');
+  [...new Set(eventos.map(e=>e.ciudad))].forEach(c=>{
+    const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o);
+  });
+}
+let reservaActual=null;
+function openReservaModal(codigo){
+  reservaActual=eventos.find(e=>e.codigo===codigo);
+  document.getElementById('reservaEventoTitulo').textContent='Reservar: '+reservaActual.nombre;
+  document.getElementById('reservaEntradas').value=2;
+  actualizarResumenReserva();
+  document.getElementById('modalReserva').classList.add('active');
+}
+document.addEventListener('input',e=>{
+  if(e.target.id==='reservaEntradas') actualizarResumenReserva();
+});
+function actualizarResumenReserva(){
+  if(!reservaActual) return;
+  const n=parseInt(document.getElementById('reservaEntradas').value)||0;
+  document.getElementById('reservaResumen').textContent = `Valor total: $${(n*reservaActual.precio).toLocaleString('es-CO')} · Evento: ${reservaActual.nombre}`;
+}
+function confirmarReserva(){
+  closeModal('modalReserva');
+  showToast('Reserva creada con estado "Reservada"');
+}
+
+/* ---------------- MIS RESERVAS ---------------- */
+function renderReservasCliente(){
+  const body=document.getElementById('reservasClienteBody');
+  body.innerHTML = reservasCliente.map(r=>`
+    <tr>
+      <td>${r.id}</td><td>${r.evento}</td><td>${r.fecha}</td><td>${r.entradas}</td>
+      <td>$${r.valor.toLocaleString('es-CO')}</td><td>${r.obs}</td>
+      <td><span class="badge ${badgeMap[r.estado]}">${r.estado}</span></td>
+    </tr>`).join('');
+}
+
+/* ---------------- PANEL AGENTE ---------------- */
+function setAgenteTab(id){
+  document.querySelectorAll('.tabline button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('eventosAgente').style.display = id==='eventosAgente'?'block':'none';
+  document.getElementById('reservasAgente').style.display = id==='reservasAgente'?'block':'none';
+}
+function renderEventosAgente(){
+  document.getElementById('eventosAgenteBody').innerHTML = eventos.map(e=>`
+    <tr>
+      <td>${e.codigo}</td><td>${e.nombre}</td><td>${e.ciudad}</td><td>${e.teatro}</td>
+      <td>${new Date(e.inicio).toLocaleDateString('es-CO')}</td><td>${e.capacidad}</td>
+      <td>$${e.precio.toLocaleString('es-CO')}</td>
+      <td><span class="badge ${badgeMap[e.estado]}">${e.estado}</span></td>
+    </tr>`).join('');
+}
+function renderReservasAgente(){
+  document.getElementById('reservasAgenteBody').innerHTML = reservasAgente.map((r,i)=>`
+    <tr>
+      <td>${r.id}</td><td>${r.cliente}</td><td>${r.evento}</td><td>${r.entradas}</td>
+      <td>$${r.valor.toLocaleString('es-CO')}</td>
+      <td><span class="badge ${badgeMap[r.estado]}" id="estadoRes${i}">${r.estado}</span></td>
+      <td>
+        <select onchange="actualizarEstadoReserva(${i}, this.value)">
+          <option value="">Cambiar a...</option>
+          <option>Reservada</option><option>Confirmada</option><option>Cancelada</option>
+        </select>
+      </td>
+    </tr>`).join('');
+}
+function actualizarEstadoReserva(i,valor){
+  if(!valor) return;
+  reservasAgente[i].estado=valor;
+  const badge=document.getElementById('estadoRes'+i);
+  badge.textContent=valor;
+  badge.className='badge '+badgeMap[valor];
+  showToast('Estado de la reserva actualizado a "'+valor+'"');
+}
+function openEventoModal(){ document.getElementById('modalEvento').classList.add('active'); }
+function registrarEvento(){
+  const nombre=document.getElementById('nvNombre').value || 'Nuevo evento';
+  eventos.push({
+    codigo:'EV-0'+(eventos.length+10), nombre, ciudad:document.getElementById('nvCiudad').value||'Cali',
+    teatro:document.getElementById('nvTeatro').value||'Por definir',
+    inicio:document.getElementById('nvInicio').value||new Date().toISOString(),
+    capacidad:parseInt(document.getElementById('nvCapacidad').value)||100,
+    precio:parseInt(document.getElementById('nvPrecio').value)||50000,
+    estado:'Programado', color1:'#6C4AB6', color2:'#F2A93B'
+  });
+  closeModal('modalEvento');
+  renderEventosAgente(); renderEventos();
+  showToast('Evento registrado correctamente');
+}
+
+/* ---------------- ADMIN CHARTS ---------------- */
+let chartsInit=false;
+function initCharts(){
+  if(chartsInit) return; chartsInit=true;
+  new Chart(document.getElementById('chartIngresos'),{
+    type:'bar',
+    data:{labels:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep'],
+      datasets:[{label:'Ingresos ($)', data:[12,15,9,18,22,26,20,30,24].map(v=>v*1000000),
+        backgroundColor:'#6C4AB6', borderRadius:6}]},
+    options:{plugins:{legend:{display:false}}, scales:{y:{ticks:{callback:v=>'$'+(v/1000000)+'M'}}}}
+  });
+  new Chart(document.getElementById('chartReservas'),{
+    type:'doughnut',
+    data:{labels:eventos.map(e=>e.nombre.split(':')[0]),
+      datasets:[{data:[42,30,58,20,65,15], backgroundColor:['#6C4AB6','#E85D6B','#F2A93B','#2FA891','#4B3182','#8A8296']}]},
+    options:{plugins:{legend:{position:'bottom', labels:{boxWidth:10,font:{size:10}}}}}
+  });
+}
+
+/* ---------------- PLANIFICACIÓN (JIRA) ---------------- */
+const jiraItems = [
+  {id:"AF-1", tipo:"Épica", titulo:"Análisis y modelado UML del sistema", resp:"Equipo completo", sp:"—", ini:"04 Ago", fin:"08 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-2", tipo:"Historia", titulo:"Como analista quiero el diagrama de clases y de casos de uso", resp:"Valentina Gómez", sp:5, ini:"04 Ago", fin:"07 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-3", tipo:"Tarea", titulo:"Modelo entidad-relación de la base de datos", resp:"Valentina Gómez", sp:3, ini:"06 Ago", fin:"08 Ago", sprint:"Sprint 1", estado:"En progreso"},
+  {id:"AF-4", tipo:"Épica", titulo:"Diseño de prototipos en Figma", resp:"Equipo completo", sp:"—", ini:"06 Ago", fin:"13 Ago", sprint:"Sprint 1", estado:"En progreso"},
+  {id:"AF-5", tipo:"Historia", titulo:"Como cliente quiero ver el catálogo de eventos disponibles", resp:"Samuel Ortiz", sp:5, ini:"07 Ago", fin:"10 Ago", sprint:"Sprint 1", estado:"En progreso"},
+  {id:"AF-6", tipo:"Historia", titulo:"Como cliente quiero reservar entradas de un evento", resp:"Samuel Ortiz", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-7", tipo:"Historia", titulo:"Como agente quiero registrar un nuevo evento", resp:"Camila Ríos", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-8", tipo:"Historia", titulo:"Como agente quiero actualizar el estado de una reserva", resp:"Camila Ríos", sp:3, ini:"11 Ago", fin:"13 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-9", tipo:"Épica", titulo:"Configuración del repositorio y tablero de trabajo", resp:"Julián Torres", sp:"—", ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-10", tipo:"Tarea", titulo:"Crear repositorio en GitHub y estructura de carpetas", resp:"Julián Torres", sp:2, ini:"04 Ago", fin:"04 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-11", tipo:"Tarea", titulo:"Configurar proyecto y backlog en Jira", resp:"Julián Torres", sp:2, ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-12", tipo:"Subtarea", titulo:"Definir convención de ramas y commits", resp:"Julián Torres", sp:1, ini:"05 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-13", tipo:"Historia", titulo:"Como usuario quiero iniciar sesión con correo y contraseña", resp:"Samuel Ortiz", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-14", tipo:"Historia", titulo:"Como visitante quiero registrarme como cliente o agente", resp:"Valentina Gómez", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-15", tipo:"Tarea", titulo:"Maquetado de vistas con HTML5, CSS y Bootstrap", resp:"Camila Ríos", sp:5, ini:"14 Ago", fin:"19 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-16", tipo:"Subtarea", titulo:"Componente de tarjeta de evento reutilizable", resp:"Camila Ríos", sp:2, ini:"15 Ago", fin:"16 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-17", tipo:"Tarea", titulo:"Revisión y ajuste final de prototipos Figma", resp:"Equipo completo", sp:3, ini:"18 Ago", fin:"20 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-18", tipo:"Tarea", titulo:"Preparar documentación y evidencias del Corte #1", resp:"Julián Torres", sp:2, ini:"22 Ago", fin:"25 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+];
+const estadoBadge = {"Confirmada":"badge-confirmada","En progreso":"badge-progreso","Pendiente":"badge-pendiente","Reprogramada":"badge-reprogramada"};
+const tipoBadge = {"Épica":"badge-epica","Historia":"badge-historia","Tarea":"badge-tarea","Subtarea":"badge-subtarea"};
+function renderJira(){
+  document.getElementById('jiraBody').innerHTML = jiraItems.map(it=>`
+    <tr>
+      <td>${it.id}</td>
+      <td><span class="badge ${tipoBadge[it.tipo]}">${it.tipo}</span></td>
+      <td>${it.titulo}</td>
+      <td>${it.resp}</td>
+      <td>${it.sp}</td>
+      <td>${it.ini}</td>
+      <td>${it.fin}</td>
+      <td>${it.sprint}</td>
+      <td><span class="badge ${estadoBadge[it.estado]}">${it.estado}</span></td>
+    </tr>`).join('');
+}
+
+/* ---------------- DAILY SCRUM ---------------- */
+const scrumLog = [
+  {fecha:"04 Ago", integrante:"Julián Torres", asistio:true, hecho:"Creó el repositorio y la estructura base del proyecto.", plan:"Configurar el tablero en Jira.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"04 Ago", integrante:"Valentina Gómez", asistio:true, hecho:"Inició el diagrama de casos de uso.", plan:"Terminar diagrama de clases.", imped:"Dudas sobre relaciones entre Persona y Cliente/Agente.", mitig:"Consulta con el docente en el foro del curso.", estado:"En progreso"},
+  {fecha:"05 Ago", integrante:"Samuel Ortiz", asistio:true, hecho:"Investigó referentes de diseño (Tuboleta, Eventbrite).", plan:"Bocetar wireframes del catálogo de eventos.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"05 Ago", integrante:"Camila Ríos", asistio:false, hecho:"—", plan:"Bocetar panel de agente.", imped:"Compromiso académico de otra asignatura.", mitig:"Se reprograma su entrega para el 06 de agosto.", estado:"Reprogramada"},
+  {fecha:"06 Ago", integrante:"Julián Torres", asistio:true, hecho:"Configuró columnas y épicas en Jira.", plan:"Redactar historias de usuario de cliente.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"06 Ago", integrante:"Valentina Gómez", asistio:true, hecho:"Terminó el diagrama de clases preliminar.", plan:"Iniciar el modelo entidad-relación.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"07 Ago", integrante:"Samuel Ortiz", asistio:true, hecho:"Wireframes de catálogo y detalle de evento.", plan:"Wireframe de reserva y mis reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
+  {fecha:"07 Ago", integrante:"Camila Ríos", asistio:true, hecho:"Bocetó el panel de agente (registro de eventos).", plan:"Bocetar administración de reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
+  {fecha:"08 Ago", integrante:"Equipo completo", asistio:true, hecho:"Revisión conjunta de wireframes y ajuste del modelo ER.", plan:"Iniciar prototipos en Figma de alta fidelidad.", imped:"Cambios de última hora en reglas de negocio de reservas.", mitig:"Se documentan los cambios en el README del repositorio.", estado:"Completada"},
+];
+function renderScrum(){
+  document.getElementById('scrumBody').innerHTML = scrumLog.map(s=>`
+    <tr>
+      <td>${s.fecha}</td><td>${s.integrante}</td>
+      <td><span class="badge ${s.asistio?'badge-si':'badge-no'}">${s.asistio?'Asistió':'Ausente'}</span></td>
+      <td>${s.hecho}</td><td>${s.plan}</td><td>${s.imped}</td><td>${s.mitig}</td>
+      <td><span class="badge ${estadoBadge[s.estado]}">${s.estado}</span></td>
+    </tr>`).join('');
+}
+
+/* ---------------- INIT ---------------- */
+populateFiltroCiudad();
+renderEventos();
+renderReservasCliente();
+renderEventosAgente();
+renderReservasAgente();
+renderJira();
+renderScrum();
+</script>
+</body>
+</html>
