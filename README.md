@@ -12,10 +12,10 @@ El sistema está inspirado en plataformas como Tuboleta, Taquilla Live, Eventbri
 
 | Integrante | Rol principal en el proyecto |
 |---|---|
-| Julián Torres | Repositorio, control de versiones, tablero Jira |
-| Valentina Gómez | Modelado UML, base de datos |
-| Samuel Ortiz | Frontend cliente (catálogo, reservas) |
-| Camila Ríos | Frontend agente / maquetado |
+| Stiven Manzano | Modelado de base de datos, reservas y autenticación de cliente, backlog Jira |
+| Nicolás Ceballos | Catálogo y registro de eventos, repositorio GitHub, maquetado frontend |
+
+Las tareas más complejas (análisis UML, modelo entidad-relación, diseño en Figma, revisión final y documentación del corte) se trabajan en conjunto por todo el equipo — ver detalle en `planificacion/jira-backlog.csv`.
 
 ## Estado actual — Corte #1
 

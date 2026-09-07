@@ -19,7 +19,7 @@
 
 | Integrante | Frente principal |
 |---|---|
-| Julián Torres | Repositorio, Git/GitHub, configuración de Jira |
-| Valentina Gómez | Modelado UML, base de datos |
-| Samuel Ortiz | Frontend — módulo cliente |
-| Camila Ríos | Frontend — módulo agente / maquetado |
+| Stiven Manzano | Modelado de base de datos, reservas y autenticación de cliente, backlog Jira |
+| Nicolás Ceballos | Catálogo y registro de eventos, repositorio GitHub, maquetado frontend |
+
+Tareas de mayor complejidad (análisis UML, modelo entidad-relación, diseño en Figma, revisión final y documentación del corte) se asignan a "Equipo completo" y se trabajan en conjunto.
