@@ -500,7 +500,7 @@ const reservasCliente = [
 
 const reservasAgente = [
   {id:"RS-101", cliente:"Ana Ríos", evento:"Festival Sonidos del Pacífico", entradas:2, valor:240000, estado:"Confirmada"},
-  {id:"RS-104", cliente:"Julián Torres", evento:"Sinfónica de Medellín: Noche de Gala", entradas:3, valor:285000, estado:"Reservada"},
+  {id:"RS-104", cliente:"Laura Ramírez", evento:"Sinfónica de Medellín: Noche de Gala", entradas:3, valor:285000, estado:"Reservada"},
   {id:"RS-105", cliente:"Camila Vega", evento:"Rock en el Parque Local", entradas:5, valor:750000, estado:"Reservada"}
 ];
 
@@ -690,23 +690,23 @@ function initCharts(){
 /* ---------------- PLANIFICACIÓN (JIRA) ---------------- */
 const jiraItems = [
   {id:"AF-1", tipo:"Épica", titulo:"Análisis y modelado UML del sistema", resp:"Equipo completo", sp:"—", ini:"04 Ago", fin:"08 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-2", tipo:"Historia", titulo:"Como analista quiero el diagrama de clases y de casos de uso", resp:"Valentina Gómez", sp:5, ini:"04 Ago", fin:"07 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-3", tipo:"Tarea", titulo:"Modelo entidad-relación de la base de datos", resp:"Valentina Gómez", sp:3, ini:"06 Ago", fin:"08 Ago", sprint:"Sprint 1", estado:"En progreso"},
+  {id:"AF-2", tipo:"Historia", titulo:"Como analista quiero el diagrama de clases y de casos de uso", resp:"Stiven Manzano", sp:5, ini:"04 Ago", fin:"07 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-3", tipo:"Tarea", titulo:"Modelo entidad-relación de la base de datos", resp:"Equipo completo", sp:3, ini:"06 Ago", fin:"08 Ago", sprint:"Sprint 1", estado:"En progreso"},
   {id:"AF-4", tipo:"Épica", titulo:"Diseño de prototipos en Figma", resp:"Equipo completo", sp:"—", ini:"06 Ago", fin:"13 Ago", sprint:"Sprint 1", estado:"En progreso"},
-  {id:"AF-5", tipo:"Historia", titulo:"Como cliente quiero ver el catálogo de eventos disponibles", resp:"Samuel Ortiz", sp:5, ini:"07 Ago", fin:"10 Ago", sprint:"Sprint 1", estado:"En progreso"},
-  {id:"AF-6", tipo:"Historia", titulo:"Como cliente quiero reservar entradas de un evento", resp:"Samuel Ortiz", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-7", tipo:"Historia", titulo:"Como agente quiero registrar un nuevo evento", resp:"Camila Ríos", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-8", tipo:"Historia", titulo:"Como agente quiero actualizar el estado de una reserva", resp:"Camila Ríos", sp:3, ini:"11 Ago", fin:"13 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-9", tipo:"Épica", titulo:"Configuración del repositorio y tablero de trabajo", resp:"Julián Torres", sp:"—", ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-10", tipo:"Tarea", titulo:"Crear repositorio en GitHub y estructura de carpetas", resp:"Julián Torres", sp:2, ini:"04 Ago", fin:"04 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-11", tipo:"Tarea", titulo:"Configurar proyecto y backlog en Jira", resp:"Julián Torres", sp:2, ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-12", tipo:"Subtarea", titulo:"Definir convención de ramas y commits", resp:"Julián Torres", sp:1, ini:"05 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
-  {id:"AF-13", tipo:"Historia", titulo:"Como usuario quiero iniciar sesión con correo y contraseña", resp:"Samuel Ortiz", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-14", tipo:"Historia", titulo:"Como visitante quiero registrarme como cliente o agente", resp:"Valentina Gómez", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-15", tipo:"Tarea", titulo:"Maquetado de vistas con HTML5, CSS y Bootstrap", resp:"Camila Ríos", sp:5, ini:"14 Ago", fin:"19 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-16", tipo:"Subtarea", titulo:"Componente de tarjeta de evento reutilizable", resp:"Camila Ríos", sp:2, ini:"15 Ago", fin:"16 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-5", tipo:"Historia", titulo:"Como cliente quiero ver el catálogo de eventos disponibles", resp:"Nicolás Ceballos", sp:5, ini:"07 Ago", fin:"10 Ago", sprint:"Sprint 1", estado:"En progreso"},
+  {id:"AF-6", tipo:"Historia", titulo:"Como cliente quiero reservar entradas de un evento", resp:"Nicolás Ceballos", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-7", tipo:"Historia", titulo:"Como agente quiero registrar un nuevo evento", resp:"Stiven Manzano", sp:5, ini:"08 Ago", fin:"11 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-8", tipo:"Historia", titulo:"Como agente quiero actualizar el estado de una reserva", resp:"Stiven Manzano", sp:3, ini:"11 Ago", fin:"13 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-9", tipo:"Épica", titulo:"Configuración del repositorio y tablero de trabajo", resp:"Equipo completo", sp:"—", ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-10", tipo:"Tarea", titulo:"Crear repositorio en GitHub y estructura de carpetas", resp:"Nicolás Ceballos", sp:2, ini:"04 Ago", fin:"04 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-11", tipo:"Tarea", titulo:"Configurar proyecto y backlog en Jira", resp:"Nicolás Ceballos", sp:2, ini:"04 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-12", tipo:"Subtarea", titulo:"Definir convención de ramas y commits", resp:"Nicolás Ceballos", sp:1, ini:"05 Ago", fin:"05 Ago", sprint:"Sprint 1", estado:"Confirmada"},
+  {id:"AF-13", tipo:"Historia", titulo:"Como usuario quiero iniciar sesión con correo y contraseña", resp:"Nicolás Ceballos", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-14", tipo:"Historia", titulo:"Como visitante quiero registrarme como cliente o agente", resp:"Stiven Manzano", sp:3, ini:"12 Ago", fin:"14 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-15", tipo:"Tarea", titulo:"Maquetado de vistas con HTML5, CSS y Bootstrap", resp:"Stiven Manzano", sp:5, ini:"14 Ago", fin:"19 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-16", tipo:"Subtarea", titulo:"Componente de tarjeta de evento reutilizable", resp:"Stiven Manzano", sp:2, ini:"15 Ago", fin:"16 Ago", sprint:"Sprint 1", estado:"Pendiente"},
   {id:"AF-17", tipo:"Tarea", titulo:"Revisión y ajuste final de prototipos Figma", resp:"Equipo completo", sp:3, ini:"18 Ago", fin:"20 Ago", sprint:"Sprint 1", estado:"Pendiente"},
-  {id:"AF-18", tipo:"Tarea", titulo:"Preparar documentación y evidencias del Corte #1", resp:"Julián Torres", sp:2, ini:"22 Ago", fin:"25 Ago", sprint:"Sprint 1", estado:"Pendiente"},
+  {id:"AF-18", tipo:"Tarea", titulo:"Preparar documentación y evidencias del Corte #1", resp:"Equipo completo", sp:2, ini:"22 Ago", fin:"25 Ago", sprint:"Sprint 1", estado:"Pendiente"},
 ];
 const estadoBadge = {"Confirmada":"badge-confirmada","En progreso":"badge-progreso","Pendiente":"badge-pendiente","Reprogramada":"badge-reprogramada"};
 const tipoBadge = {"Épica":"badge-epica","Historia":"badge-historia","Tarea":"badge-tarea","Subtarea":"badge-subtarea"};
@@ -727,14 +727,14 @@ function renderJira(){
 
 /* ---------------- DAILY SCRUM ---------------- */
 const scrumLog = [
-  {fecha:"04 Ago", integrante:"Julián Torres", asistio:true, hecho:"Creó el repositorio y la estructura base del proyecto.", plan:"Configurar el tablero en Jira.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
-  {fecha:"04 Ago", integrante:"Valentina Gómez", asistio:true, hecho:"Inició el diagrama de casos de uso.", plan:"Terminar diagrama de clases.", imped:"Dudas sobre relaciones entre Persona y Cliente/Agente.", mitig:"Consulta con el docente en el foro del curso.", estado:"En progreso"},
-  {fecha:"05 Ago", integrante:"Samuel Ortiz", asistio:true, hecho:"Investigó referentes de diseño (Tuboleta, Eventbrite).", plan:"Bocetar wireframes del catálogo de eventos.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
-  {fecha:"05 Ago", integrante:"Camila Ríos", asistio:false, hecho:"—", plan:"Bocetar panel de agente.", imped:"Compromiso académico de otra asignatura.", mitig:"Se reprograma su entrega para el 06 de agosto.", estado:"Reprogramada"},
-  {fecha:"06 Ago", integrante:"Julián Torres", asistio:true, hecho:"Configuró columnas y épicas en Jira.", plan:"Redactar historias de usuario de cliente.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
-  {fecha:"06 Ago", integrante:"Valentina Gómez", asistio:true, hecho:"Terminó el diagrama de clases preliminar.", plan:"Iniciar el modelo entidad-relación.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
-  {fecha:"07 Ago", integrante:"Samuel Ortiz", asistio:true, hecho:"Wireframes de catálogo y detalle de evento.", plan:"Wireframe de reserva y mis reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
-  {fecha:"07 Ago", integrante:"Camila Ríos", asistio:true, hecho:"Bocetó el panel de agente (registro de eventos).", plan:"Bocetar administración de reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
+  {fecha:"04 Ago", integrante:"Nicolás Ceballos", asistio:true, hecho:"Creó el repositorio y la estructura base del proyecto.", plan:"Configurar el tablero en Jira.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"04 Ago", integrante:"Stiven Manzano", asistio:true, hecho:"Inició el diagrama de casos de uso.", plan:"Terminar diagrama de clases.", imped:"Dudas sobre relaciones entre Persona y Cliente/Agente.", mitig:"Consulta con el docente en el foro del curso.", estado:"En progreso"},
+  {fecha:"05 Ago", integrante:"Nicolás Ceballos", asistio:true, hecho:"Investigó referentes de diseño (Tuboleta, Eventbrite).", plan:"Bocetar wireframes del catálogo de eventos.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"05 Ago", integrante:"Stiven Manzano", asistio:false, hecho:"—", plan:"Bocetar panel de agente.", imped:"Compromiso académico de otra asignatura.", mitig:"Se reprograma su entrega para el 06 de agosto.", estado:"Reprogramada"},
+  {fecha:"06 Ago", integrante:"Nicolás Ceballos", asistio:true, hecho:"Configuró columnas y épicas en Jira.", plan:"Redactar historias de usuario de cliente.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"06 Ago", integrante:"Stiven Manzano", asistio:true, hecho:"Terminó el diagrama de clases preliminar.", plan:"Iniciar el modelo entidad-relación.", imped:"Ninguno.", mitig:"—", estado:"Completada"},
+  {fecha:"07 Ago", integrante:"Nicolás Ceballos", asistio:true, hecho:"Wireframes de catálogo y detalle de evento.", plan:"Wireframe de reserva y mis reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
+  {fecha:"07 Ago", integrante:"Stiven Manzano", asistio:true, hecho:"Bocetó el panel de agente (registro de eventos).", plan:"Bocetar administración de reservas.", imped:"Ninguno.", mitig:"—", estado:"En progreso"},
   {fecha:"08 Ago", integrante:"Equipo completo", asistio:true, hecho:"Revisión conjunta de wireframes y ajuste del modelo ER.", plan:"Iniciar prototipos en Figma de alta fidelidad.", imped:"Cambios de última hora en reglas de negocio de reservas.", mitig:"Se documentan los cambios en el README del repositorio.", estado:"Completada"},
 ];
 function renderScrum(){
