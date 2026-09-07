@@ -1,19 +1,19 @@
-Issue key,Issue Type,Summary,Assignee,Story Points,Start date,Due date,Sprint,Status
-AF-1,Epic,Análisis y modelado UML del sistema,Equipo completo,,2026-08-04,2026-08-08,Sprint 1,Confirmada
-AF-2,Story,Como analista quiero el diagrama de clases y de casos de uso,Valentina Gómez,5,2026-08-04,2026-08-07,Sprint 1,Confirmada
-AF-3,Task,Modelo entidad-relación de la base de datos,Valentina Gómez,3,2026-08-06,2026-08-08,Sprint 1,En progreso
-AF-4,Epic,Diseño de prototipos en Figma,Equipo completo,,2026-08-06,2026-08-13,Sprint 1,En progreso
-AF-5,Story,Como cliente quiero ver el catálogo de eventos disponibles,Samuel Ortiz,5,2026-08-07,2026-08-10,Sprint 1,En progreso
-AF-6,Story,Como cliente quiero reservar entradas de un evento,Samuel Ortiz,5,2026-08-08,2026-08-11,Sprint 1,Pendiente
-AF-7,Story,Como agente quiero registrar un nuevo evento,Camila Ríos,5,2026-08-08,2026-08-11,Sprint 1,Pendiente
-AF-8,Story,Como agente quiero actualizar el estado de una reserva,Camila Ríos,3,2026-08-11,2026-08-13,Sprint 1,Pendiente
-AF-9,Epic,Configuración del repositorio y tablero de trabajo,Julián Torres,,2026-08-04,2026-08-05,Sprint 1,Confirmada
-AF-10,Task,Crear repositorio en GitHub y estructura de carpetas,Julián Torres,2,2026-08-04,2026-08-04,Sprint 1,Confirmada
-AF-11,Task,Configurar proyecto y backlog en Jira,Julián Torres,2,2026-08-04,2026-08-05,Sprint 1,Confirmada
-AF-12,Sub-task,Definir convención de ramas y commits,Julián Torres,1,2026-08-05,2026-08-05,Sprint 1,Confirmada
-AF-13,Story,Como usuario quiero iniciar sesión con correo y contraseña,Samuel Ortiz,3,2026-08-12,2026-08-14,Sprint 1,Pendiente
-AF-14,Story,Como visitante quiero registrarme como cliente o agente,Valentina Gómez,3,2026-08-12,2026-08-14,Sprint 1,Pendiente
-AF-15,Task,Maquetado de vistas con HTML5 CSS y Bootstrap,Camila Ríos,5,2026-08-14,2026-08-19,Sprint 1,Pendiente
-AF-16,Sub-task,Componente de tarjeta de evento reutilizable,Camila Ríos,2,2026-08-15,2026-08-16,Sprint 1,Pendiente
-AF-17,Task,Revisión y ajuste final de prototipos Figma,Equipo completo,3,2026-08-18,2026-08-20,Sprint 1,Pendiente
-AF-18,Task,Preparar documentación y evidencias del Corte #1,Julián Torres,2,2026-08-22,2026-08-25,Sprint 1,Pendiente
+Summary,Issue Type,Status,Assignee,Story Points,Start date,Due date,Sprint,Epic Link
+[AF-1] Análisis y modelado UML del sistema,Epic,Done,Equipo completo,,2026-08-04,2026-08-08,Sprint 1,
+[AF-2] Como analista quiero el diagrama de clases y de casos de uso,Story,Done,Valentina Gómez,5,2026-08-04,2026-08-07,Sprint 1,[AF-1] Análisis y modelado UML del sistema
+[AF-3] Modelo entidad-relación de la base de datos,Task,In Progress,Valentina Gómez,3,2026-08-06,2026-08-08,Sprint 1,[AF-1] Análisis y modelado UML del sistema
+[AF-4] Diseño de prototipos en Figma,Epic,In Progress,Equipo completo,,2026-08-06,2026-08-13,Sprint 1,
+[AF-5] Como cliente quiero ver el catálogo de eventos disponibles,Story,In Progress,Samuel Ortiz,5,2026-08-07,2026-08-10,Sprint 1,
+[AF-6] Como cliente quiero reservar entradas de un evento,Story,To Do,Samuel Ortiz,5,2026-08-08,2026-08-11,Sprint 1,
+[AF-7] Como agente quiero registrar un nuevo evento,Story,To Do,Camila Ríos,5,2026-08-08,2026-08-11,Sprint 1,
+[AF-8] Como agente quiero actualizar el estado de una reserva,Story,To Do,Camila Ríos,3,2026-08-11,2026-08-13,Sprint 1,
+[AF-9] Configuración del repositorio y tablero de trabajo,Epic,Done,Julián Torres,,2026-08-04,2026-08-05,Sprint 1,
+[AF-10] Crear repositorio en GitHub y estructura de carpetas,Task,Done,Julián Torres,2,2026-08-04,2026-08-04,Sprint 1,[AF-9] Configuración del repositorio y tablero de trabajo
+[AF-11] Configurar proyecto y backlog en Jira,Task,Done,Julián Torres,2,2026-08-04,2026-08-05,Sprint 1,[AF-9] Configuración del repositorio y tablero de trabajo
+[AF-12] Definir convención de ramas y commits,Sub-task,Done,Julián Torres,1,2026-08-05,2026-08-05,Sprint 1,[AF-9] Configuración del repositorio y tablero de trabajo
+[AF-13] Como usuario quiero iniciar sesión con correo y contraseña,Story,To Do,Samuel Ortiz,3,2026-08-12,2026-08-14,Sprint 1,
+[AF-14] Como visitante quiero registrarme como cliente o agente,Story,To Do,Valentina Gómez,3,2026-08-12,2026-08-14,Sprint 1,
+[AF-15] Maquetado de vistas con HTML5 CSS y Bootstrap,Task,To Do,Camila Ríos,5,2026-08-14,2026-08-19,Sprint 1,
+[AF-16] Componente de tarjeta de evento reutilizable,Sub-task,To Do,Camila Ríos,2,2026-08-15,2026-08-16,Sprint 1,
+[AF-17] Revisión y ajuste final de prototipos Figma,Task,To Do,Equipo completo,3,2026-08-18,2026-08-20,Sprint 1,[AF-4] Diseño de prototipos en Figma
+[AF-18] Preparar documentación y evidencias del Corte #1,Task,To Do,Julián Torres,2,2026-08-22,2026-08-25,Sprint 1,

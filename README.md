@@ -21,7 +21,7 @@ El sistema está inspirado en plataformas como Tuboleta, Taquilla Live, Eventbri
 
 - [x] Prototipo de interfaz navegable (HTML) — `frontend/prototipo/aforo.html`
 - [x] Backlog planificado (Épicas, Historias, Tareas, Subtareas) — `planificacion/jira-backlog.csv`
-- [ ] Prototipos de alta fidelidad en Figma (en construcción, ver `docs/figma-guia-pantallas.md`)
+- [x] Prototipos de alta fidelidad en Figma — [ver enlace](https://www.figma.com/design/4r8vN6w9xOFWarOO1prsjp/Sin-t%C3%ADtulo?node-id=2-33) (guía de pantallas en `docs/figma-guia-pantallas.md`)
 - [ ] Backend y base de datos (próximo corte)
 
 ## Estructura del repositorio
@@ -68,6 +68,10 @@ El prototipo es una página estática, no requiere instalación:
 ## Planificación (Jira)
 
 El detalle de épicas, historias de usuario, tareas y subtareas del Sprint 1, con responsable, estimación en Story Points, fechas y estado, se encuentra en [`planificacion/jira-backlog.csv`](planificacion/jira-backlog.csv), listo para importar en un proyecto Scrum de Jira.
+
+## Prototipo de diseño (Figma)
+
+Prototipo de interfaces en Figma: [Aforo — Prototipo UI](https://www.figma.com/design/4r8vN6w9xOFWarOO1prsjp/Sin-t%C3%ADtulo?node-id=2-33)
 
 ## Licencia
 
