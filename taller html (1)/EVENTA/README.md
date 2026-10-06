@@ -25,4 +25,4 @@ Home Page principal de EVENTA desarrollada con enfoque Mobile-First y alineada c
 Abrir `index.html` en un navegador web. Las imágenes utilizadas provienen de Unsplash mediante URLs externas.
 
 ## Repositorio
-https://github.com/tu-usuario/eventa-mobile-first
+https://github.com/stivenm2005/proyecto-aforo-stiven-nicolas
