@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="navbar">
+    <a href="#inicio" class="logo">EVENTA</a>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Mis eventos</a>
+        <a href="#reservas">Mis reservas</a>
+        <a href="#agente">Agente</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="#login" class="btn btn-outline">Iniciar sesión</a>
+        <a href="#registro" class="btn btn-purple">Registrarse</a>
+        <span class="avatar">U</span>
+    </div>
+</header>
+
+
+<main>
+
+<!-- ==================== 1. HOME ==================== -->
+<section id="inicio" class="page home-page">
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="tag">EVENTOS • EXPERIENCIAS • COMUNIDAD</span>
+            <h1>Descubre tus próximos<br>eventos</h1>
+            <p>Encuentra experiencias increíbles cerca de ti y reserva tu lugar.</p>
+
+            <div class="search-box">
+                <input type="text" placeholder="¿Qué evento estás buscando?">
+                <button class="btn btn-purple">Buscar</button>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <span>EVENTA</span>
+            <h3>Conéctate en vivo</h3>
+            <p>Descubre nuevas experiencias y comparte momentos.</p>
+            <a href="#eventos" class="btn btn-purple">Ver eventos</a>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <div>
+            <span class="small-title">EXPLORA</span>
+            <h2>Explora por categoría</h2>
+        </div>
+    </div>
+
+    <div class="categories">
+        <a href="#eventos">Música</a>
+        <a href="#eventos">Fiestas</a>
+        <a href="#eventos">Deportes</a>
+        <a href="#eventos">Arte</a>
+        <a href="#eventos">Comedia</a>
+        <a href="#eventos">Cultura</a>
+        <a href="#eventos">Gratis</a>
+        <a href="#eventos">Todos</a>
+    </div>
+
+    <div class="section-title">
+        <div>
+            <span class="small-title">DESCUBRE</span>
+            <h2>Eventos destacados</h2>
+        </div>
+        <a href="#eventos" class="link">Ver todos →</a>
+    </div>
+
+    <div class="cards">
+        <article class="event-card">
+            <div class="event-img img-1"></div>
+            <div class="event-body">
+                <span class="event-category">Música</span>
+                <h3>Festival de música</h3>
+                <p>15 Oct • 7:00 PM</p>
+                <strong>$80.000</strong>
+                <a href="#detalle" class="btn btn-purple">Ver evento</a>
+            </div>
+        </article>
+
+        <article class="event-card">
+            <div class="event-img img-2"></div>
+            <div class="event-body">
+                <span class="event-category">Deportes</span>
+                <h3>Gran torneo urbano</h3>
+                <p>20 Oct • 2:00 PM</p>
+                <strong>$45.000</strong>
+                <a href="#detalle" class="btn btn-purple">Ver evento</a>
+            </div>
+        </article>
+
+        <article class="event-card">
+            <div class="event-img img-3"></div>
+            <div class="event-body">
+                <span class="event-category">Cultura</span>
+                <h3>Festival gastronómico</h3>
+                <p>22 Oct • 5:00 PM</p>
+                <strong>Gratis</strong>
+                <a href="#detalle" class="btn btn-purple">Ver evento</a>
+            </div>
+        </article>
+
+        <article class="event-card">
+            <div class="event-img img-4"></div>
+            <div class="event-body">
+                <span class="event-category">Comedia</span>
+                <h3>El rey de la comedia</h3>
+                <p>28 Oct • 8:00 PM</p>
+                <strong>$60.000</strong>
+                <a href="#detalle" class="btn btn-purple">Ver evento</a>
+            </div>
+        </article>
+    </div>
+
+    <div class="info-strip">
+        <div><b>✓</b><span><strong>Regístrate</strong><br>crea tu cuenta</span></div>
+        <div><b>✓</b><span><strong>Busca eventos</strong><br>encuentra experiencias</span></div>
+        <div><b>✓</b><span><strong>Reserva</strong><br>asegura tu lugar</span></div>
+        <div><b>✓</b><span><strong>Disfruta</strong><br>vive el evento</span></div>
+    </div>
+</section>
+
+
+<!-- ==================== 2. MIS EVENTOS ==================== -->
+<section id="eventos" class="page light-page">
+    <div class="page-header">
+        <span class="small-title">EVENTA</span>
+        <h1>Mis eventos</h1>
+        <p>Encuentra y administra los eventos que quieres disfrutar.</p>
+    </div>
+
+    <div class="filter-row">
+        <button class="filter active">Todos</button>
+        <button class="filter">Música</button>
+        <button class="filter">Deportes</button>
+        <button class="filter">Cultura</button>
+        <button class="filter">Comedia</button>
+        <button class="filter">Gratis</button>
+    </div>
+
+    <div class="cards six">
+        <article class="event-card">
+            <div class="event-img img-1"></div>
+            <div class="event-body"><span class="event-category">Música</span><h3>Festival de música</h3><p>15 Oct • 7:00 PM</p><strong>$80.000</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+        <article class="event-card">
+            <div class="event-img img-2"></div>
+            <div class="event-body"><span class="event-category">Deportes</span><h3>Gran torneo urbano</h3><p>20 Oct • 2:00 PM</p><strong>$45.000</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+        <article class="event-card">
+            <div class="event-img img-3"></div>
+            <div class="event-body"><span class="event-category">Cultura</span><h3>Festival gastronómico</h3><p>22 Oct • 5:00 PM</p><strong>Gratis</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+        <article class="event-card">
+            <div class="event-img img-4"></div>
+            <div class="event-body"><span class="event-category">Comedia</span><h3>El rey de la comedia</h3><p>28 Oct • 8:00 PM</p><strong>$60.000</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+        <article class="event-card">
+            <div class="event-img img-5"></div>
+            <div class="event-body"><span class="event-category">Tecnología</span><h3>Encuentro tecnológico</h3><p>02 Nov • 6:00 PM</p><strong>$35.000</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+        <article class="event-card">
+            <div class="event-img img-6"></div>
+            <div class="event-body"><span class="event-category">Arte</span><h3>Experiencia visual</h3><p>08 Nov • 4:00 PM</p><strong>$25.000</strong><a href="#detalle" class="btn btn-purple">Ver evento</a></div>
+        </article>
+    </div>
+</section>
+
+
+<!-- ==================== 3. MIS RESERVAS ==================== -->
+<section id="reservas" class="page light-page">
+    <div class="page-header">
+        <span class="small-title">EVENTA</span>
+        <h1>Mis reservas</h1>
+        <p>Consulta los eventos que tienes reservados.</p>
+    </div>
+
+    <h2 class="subheading">Reservas activas</h2>
+
+    <div class="reservation-list">
+        <article class="reservation-card">
+            <div class="event-img img-1"></div>
+            <div>
+                <span class="event-category">Música</span>
+                <h3>Festival de música</h3>
+                <p>15 Oct • 7:00 PM</p>
+                <span class="status">Confirmada</span>
+            </div>
+            <a href="#detalle" class="btn btn-purple">Ver reserva</a>
+        </article>
+
+        <article class="reservation-card">
+            <div class="event-img img-2"></div>
+            <div>
+                <span class="event-category">Deportes</span>
+                <h3>Gran torneo urbano</h3>
+                <p>20 Oct • 2:00 PM</p>
+                <span class="status">Confirmada</span>
+            </div>
+            <a href="#detalle" class="btn btn-purple">Ver reserva</a>
+        </article>
+    </div>
+
+    <h2 class="subheading">Historial de reservas</h2>
+
+    <div class="reservation-card">
+        <div class="event-img img-3"></div>
+        <div>
+            <span class="event-category">Cultura</span>
+            <h3>Festival gastronómico</h3>
+            <p>Evento finalizado</p>
+            <span class="status old">Finalizada</span>
+        </div>
+        <a href="#detalle" class="btn btn-outline">Ver evento</a>
+    </div>
+
+    <div class="empty-box">
+        <h3>¿Necesitas ayuda?</h3>
+        <p>Si tienes alguna pregunta sobre tus reservas, contáctanos.</p>
+        <button class="btn btn-purple">Contactar</button>
+    </div>
+</section>
+
+
+<!-- ==================== 4. LOGIN ==================== -->
+<section id="login" class="page auth-page">
+    <div class="auth-image">
+        <div>
+            <span class="tag">EVENTA</span>
+            <h1>Bienvenido de nuevo</h1>
+            <p>Descubre nuevas experiencias y vuelve a disfrutar de tus eventos favoritos.</p>
+        </div>
+    </div>
+
+    <div class="auth-form">
+        <span class="small-title">EVENTA</span>
+        <h1>Inicia sesión</h1>
+        <p>Ingresa a tu cuenta para continuar.</p>
+
+        <form>
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="correo@ejemplo.com">
+
+            <label>Contraseña</label>
+            <input type="password" placeholder="••••••••">
+
+            <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+
+            <button class="btn btn-purple full">Ingresar</button>
+        </form>
+
+        <div class="separator"><span>o</span></div>
+
+        <a href="#registro" class="btn btn-outline full">Crear una cuenta</a>
+        <p class="center">¿No tienes una cuenta? <a href="#registro">Regístrate</a></p>
+    </div>
+</section>
+
+
+<!-- ==================== 5. REGISTRO ==================== -->
+<section id="registro" class="page auth-page">
+    <div class="auth-image">
+        <div>
+            <span class="tag">EVENTA</span>
+            <h1>Únete a EVENTA</h1>
+            <p>Crea tu cuenta y empieza a descubrir nuevas experiencias.</p>
+        </div>
+    </div>
+
+    <div class="auth-form">
+        <span class="small-title">EVENTA</span>
+        <h1>Crear cuenta</h1>
+        <p>Completa tus datos para registrarte.</p>
+
+        <form>
+            <label>Nombre completo</label>
+            <input type="text" placeholder="Tu nombre">
+
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="correo@ejemplo.com">
+
+            <div class="two-columns">
+                <div>
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <div>
+                    <label>Confirmar contraseña</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+            </div>
+
+            <label class="checkbox">
+                <input type="checkbox">
+                Acepto los términos y condiciones.
+            </label>
+
+            <button class="btn btn-purple full">Crear cuenta</button>
+        </form>
+
+        <p class="center">¿Ya tienes una cuenta? <a href="#login">Inicia sesión</a></p>
+    </div>
+</section>
+
+
+<!-- ==================== 6. DETALLE DE EVENTO ==================== -->
+<section id="detalle" class="page light-page">
+    <div class="detail-container">
+        <a href="#eventos" class="back">← Volver a eventos</a>
+
+        <div class="detail-banner img-large"></div>
+
+        <div class="detail-grid">
+            <div>
+                <span class="event-category">Música</span>
+                <h1>Festival de música</h1>
+                <p class="description">Vive una experiencia inolvidable con música, entretenimiento y actividades para todos.</p>
+
+                <div class="detail-info">
+                    <div><b>Fecha</b><span>15 de octubre</span></div>
+                    <div><b>Hora</b><span>7:00 PM</span></div>
+                    <div><b>Ubicación</b><span>Centro de eventos</span></div>
+                </div>
+
+                <div class="location-box">
+                    <b>Ubicación</b>
+                    <p>Centro de eventos EVENTA</p>
+                </div>
+            </div>
+
+            <aside class="ticket-box">
+                <span>Entradas</span>
+                <h2>$80.000</h2>
+                <p>Entrada general</p>
+                <div class="quantity">
+                    <button>−</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+                <button class="btn btn-purple full">Reservar ahora</button>
+                <button class="btn btn-outline full">Guardar evento</button>
+            </aside>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== 7. PANEL DEL AGENTE ==================== -->
+<section id="agente" class="page light-page">
+    <div class="dashboard-header">
+        <div>
+            <span class="small-title">PANEL DEL AGENTE</span>
+            <h1>Panel de agente</h1>
+            <p>Administra tus eventos y reservas.</p>
+        </div>
+        <a href="#crear-evento" class="btn btn-purple">+ Crear evento</a>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><span>Eventos publicados</span><strong>12</strong><small>+2 este mes</small></div>
+        <div class="stat"><span>Reservas</span><strong>142</strong><small>+12 esta semana</small></div>
+        <div class="stat"><span>Asistentes</span><strong>1.250</strong><small>+8%</small></div>
+        <div class="stat"><span>Ingresos</span><strong>$538,4 M</strong><small>+12%</small></div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-title">
+            <h2>Mis eventos publicados</h2>
+            <a href="#crear-evento">Ver todos →</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Fecha</th>
+                    <th>Reservas</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Festival de música</td><td>15 Oct</td><td>80</td><td><span class="status">Activo</span></td><td><a href="#detalle">Ver</a></td></tr>
+                <tr><td>Gran torneo urbano</td><td>20 Oct</td><td>45</td><td><span class="status">Activo</span></td><td><a href="#detalle">Ver</a></td></tr>
+                <tr><td>Festival gastronómico</td><td>22 Oct</td><td>120</td><td><span class="status">Activo</span></td><td><a href="#detalle">Ver</a></td></tr>
+                <tr><td>El rey de la comedia</td><td>28 Oct</td><td>67</td><td><span class="status">Activo</span></td><td><a href="#detalle">Ver</a></td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- ==================== 8. CREAR EVENTO ==================== -->
+<section id="crear-evento" class="page light-page">
+    <div class="dashboard-header">
+        <div>
+            <span class="small-title">AGENTE</span>
+            <h1>Crear evento</h1>
+            <p>Completa la información de tu nuevo evento.</p>
+        </div>
+        <a href="#agente" class="btn btn-outline">Cancelar</a>
+    </div>
+
+    <div class="create-grid">
+        <div class="form-card">
+            <form>
+                <label>Nombre del evento</label>
+                <input type="text" placeholder="Ej. Festival de música">
+
+                <label>Descripción</label>
+                <textarea placeholder="Describe tu evento"></textarea>
+
+                <div class="two-columns">
+                    <div><label>Fecha</label><input type="date"></div>
+                    <div><label>Hora</label><input type="time"></div>
+                </div>
+
+                <label>Ubicación</label>
+                <input type="text" placeholder="Lugar del evento">
+
+                <div class="two-columns">
+                    <div><label>Categoría</label><select><option>Música</option><option>Deportes</option><option>Cultura</option><option>Comedia</option></select></div>
+                    <div><label>Precio</label><input type="text" placeholder="$0"></div>
+                </div>
+
+                <label>Capacidad</label>
+                <input type="number" placeholder="Número de asistentes">
+
+                <div class="upload">
+                    <b>Subir imagen del evento</b>
+                    <p>Arrastra una imagen o haz clic para seleccionarla.</p>
+                </div>
+
+                <div class="form-actions">
+                    <a href="#agente" class="btn btn-outline">Guardar borrador</a>
+                    <button class="btn btn-purple">Publicar evento</button>
+                </div>
+            </form>
+        </div>
+
+        <aside class="preview-card">
+            <h2>Vista previa</h2>
+            <div class="preview-event">
+                <div class="event-img img-1"></div>
+                <div class="event-body">
+                    <span class="event-category">Música</span>
+                    <h3>Nombre del evento</h3>
+                    <p>Fecha • Hora</p>
+                    <strong>$0</strong>
+                </div>
+            </div>
+            <div class="check-list">
+                <b>Antes de publicar</b>
+                <p>✓ Información completa</p>
+                <p>✓ Imagen del evento</p>
+                <p>✓ Fecha y ubicación</p>
+            </div>
+        </aside>
+    </div>
+</section>
+
+
+<!-- ==================== 9. AGENTE - RESERVAS ==================== -->
+<section id="agente-reservas" class="page light-page">
+    <div class="dashboard-header">
+        <div>
+            <span class="small-title">AGENTE</span>
+            <h1>Reservas de mis eventos</h1>
+            <p>Consulta y administra las reservas realizadas.</p>
+        </div>
+        <a href="#agente" class="btn btn-outline">Volver al panel</a>
+    </div>
+
+    <div class="reservation-filters">
+        <input type="text" placeholder="Buscar reserva">
+        <select><option>Todos los eventos</option><option>Festival de música</option><option>Gran torneo urbano</option></select>
+        <button class="btn btn-purple">Filtrar</button>
+    </div>
+
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Evento</th>
+                    <th>Usuario</th>
+                    <th>Entradas</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>01/10/2026</td><td>Festival de música</td><td>María López</td><td>2</td><td>$160.000</td><td><span class="status">Confirmada</span></td></tr>
+                <tr><td>02/10/2026</td><td>Gran torneo urbano</td><td>Carlos Pérez</td><td>1</td><td>$45.000</td><td><span class="status">Confirmada</span></td></tr>
+                <tr><td>03/10/2026</td><td>Festival gastronómico</td><td>Laura Gómez</td><td>3</td><td>Gratis</td><td><span class="status">Confirmada</span></td></tr>
+                <tr><td>04/10/2026</td><td>El rey de la comedia</td><td>Juan Torres</td><td>2</td><td>$120.000</td><td><span class="status old">Cancelada</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</main>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div>
+        <strong>EVENTA</strong>
+        <p>Descubre. Reserva. Disfruta.</p>
+    </div>
+    <div>
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#reservas">Reservas</a>
+    </div>
+    <div>
+        <a href="#login">Iniciar sesión</a>
+        <a href="#registro">Registrarse</a>
+    </div>
+</footer>
+
+</body>
+</html>
