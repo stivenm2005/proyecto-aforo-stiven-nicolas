@@ -1,4 +1,4 @@
-# Guía de contribución — Equipo Aforo
+# Equipo Aforo
 
 ## Flujo de trabajo
 
