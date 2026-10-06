@@ -23,7 +23,6 @@ Home Page principal de EVENTA desarrollada con enfoque Mobile-First y alineada c
 
 ## Ejecución
 Abrir `index.html` en un navegador web. Las imágenes utilizadas provienen de Unsplash mediante URLs externas.
-file:///C:/Users/stiven%20manzano/Downloads/taller%20html%20(1)/EVENTA/index.html
 
 ## Repositorio
 https://github.com/stivenm2005/proyecto-aforo-stiven-nicolas
