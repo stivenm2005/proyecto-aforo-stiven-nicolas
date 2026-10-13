@@ -59,6 +59,10 @@ El prototipo es una página estática, no requiere instalación:
 1. Clonar el repositorio: `git clone <url-del-repo>`
 2. Abrir `frontend/prototipo/aforo.html` directamente en el navegador.
 
+## Sitio EVENTA
+
+La versión independiente de EVENTA, preparada para probar con Lighthouse, está en [`frontend/eventea-lighthouse/`](frontend/eventea-lighthouse/). Para instrucciones de compilación y evaluación local, consulta su [README](frontend/eventea-lighthouse/README.md). Esta carpeta no reemplaza el prototipo de Aforo.
+
 ## Convención de ramas y commits
 
 - **Ramas:** `main` (estable) ← `develop` ← `feature/<módulo>-<breve-descripción>` (ej. `feature/reservas-cliente`)
