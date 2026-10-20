@@ -19,7 +19,7 @@
 
 | Integrante | Frente principal |
 |---|---|
-| Stiven Manzano |  repositorio GitHub, reservas y autenticación de cliente, backlog Jira |
-| Nicolás Ceballos | Catálogo y registro de eventos, Modelado de base de datos, maquetado frontend |
+| Stiven Manzano |  Repositorio GitHub, Reservas y Autenticación de cliente, Backlog Jira |
+| Nicolás Ceballos | Catálogo y Registro de eventos, Modelado de base de datos, Maquetado Frontend |
 
 Tareas de mayor complejidad (análisis UML, modelo entidad-relación, diseño en Figma, revisión final y documentación del corte) se asignan a "Equipo completo" y se trabajan en conjunto.
