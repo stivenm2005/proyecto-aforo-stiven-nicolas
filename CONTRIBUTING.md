@@ -1,4 +1,4 @@
-# Equipo Aforo
+# Equipo De Trabajo
 
 ## Flujo de trabajo
 
