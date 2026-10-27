@@ -1,0 +1,20 @@
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'public'
+  AND table_name IN ('users', 'admin_emails', 'events', 'reservations', 'favorites')
+ORDER BY table_name;
+
+SELECT id, data->>'title' AS evento, data->>'date' AS fecha
+FROM events
+ORDER BY created_at DESC
+LIMIT 10;
+
+SELECT event_id, quantity, total_price, status
+FROM reservations
+ORDER BY created_at DESC
+LIMIT 10;
+
+SELECT event_id
+FROM favorites
+ORDER BY created_at DESC
+LIMIT 10;
