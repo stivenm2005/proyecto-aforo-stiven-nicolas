@@ -1,4 +1,4 @@
-# Aforo · Sistema de Gestión de Eventos y Espectáculos
+# EVENTEA · Sistema de Gestión de Eventos y Espectáculos
 
 Proyecto Integrador 2026-2 · Bases de Datos y Programación en Ambiente Web I
 
